@@ -15,7 +15,7 @@ def Desconectar_BD(db):
 
 def Insertar_BD(db,alumno):
     cursor = db.cursor()
-    sql="insert into Alumnos values ('%s', '%s', '%d', '%c', '%d' )" % (alumno["identificador"],alumno["nombre"],alumno["apellidos"],alumno["edad"])
+    sql="insert into Alumnos values ('%d', '%s', '%s', '%d' )" % (alumno["identificador"],alumno["nombre"],alumno["apellidos"],alumno["edad"])
     try:
         cursor.execute(sql)
         db.commit()
