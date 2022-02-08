@@ -23,7 +23,7 @@ def Insertar_BD(db,alumno):
         print("Error al insertar.")
         db.rollback()
 
-def Listar_DB(db):
+def Listar_BD(db):
     sql="select * from Alumnos"
     cursor = db.cursor(MySQLdb.cursors.DictCursor)
     try:
