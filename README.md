@@ -25,3 +25,8 @@ mysql -u root -p < esquema.sql
 
 Puedes encontrar un artículo que explica el uso de Python para gestionar una base de datos MariaDB en [Gestión de base de datos mysql/mariadb con python3](https://www.josedomingo.org/pledin/2021/12/python3-mysql/).
 
+Como nos enseña el artículo es necesario instalar la librería `mysqlclient`, para ello:
+
+```
+apt install python3-mysqldb
+```
