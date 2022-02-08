@@ -2,7 +2,7 @@ from funciones import *
 
 db = Conectar_BD("localhost","usuario","asdasd","testdb")
 Desconectar_BD(db)
-opcion=Mostrar_menu()
+opcion=MostrarMenu()
 while opcion!=0:
     if opcion==1:
         alumno={}
@@ -11,4 +11,4 @@ while opcion!=0:
         alumno["apellidos"]=input("Apellidos:")
         alumno["edad"]=int(input("Edad:"))
         Insertar_BD(db,alumno)
-        
+
