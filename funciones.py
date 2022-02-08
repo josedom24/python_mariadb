@@ -23,9 +23,20 @@ def Insertar_BD(db,alumno):
         print("Error al insertar.")
         db.rollback()
 
+def ListarDB(db):
+    sql="select * from Alumnos"
+    cursor = db.cursor(MySQLdb.cursors.DictCursor)
+    try:
+       cursor.execute(sql)
+       registros = cursor.fetchall()
+       for registro in registros:
+          print(registro["id"]," --- ",registro["nombre"],registro["apellidos"],"-- Edad:",registro["edad"])
+    except:
+       print("Error en la consulta")
 def MostrarMenu():
     menu='''
     1. Insertar Alumnos
+    2. Listas Alumnos
     0. Salir
     '''
     print(menu)

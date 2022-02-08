@@ -10,7 +10,9 @@ while opcion!=0:
         alumno["apellidos"]=input("Apellidos:")
         alumno["edad"]=int(input("Edad:"))
         Insertar_BD(db,alumno)
+    elif opcion==2:
+        Listar_BD(db)
     else:
         print("Opción incorrecta.")
     opcion=MostrarMenu()
-
+Desconectar_BD(db)
