@@ -23,6 +23,21 @@ def Insertar_BD(db,alumno):
         print("Error al insertar.")
         db.rollback()
 
+def Borrar_Alumno(db,id):
+    sql="delete from Alumnos where id=%d" % id
+    cursor = db.cursor()
+    resp=input("¿Ralmente quieres borrar al alumno %d? (pulsa 's' para si)" % id)
+    if resp=="s":
+        try:
+            cursor.execute(sql)
+            db.commit()
+            if cursor.rowcount==0:
+                print("No hay alumnos con ese id")
+        except:
+            print("Error al borrar.")
+            db.rollback()
+
+
 def Listar_BD(db):
     sql="select * from Alumnos"
     cursor = db.cursor(MySQLdb.cursors.DictCursor)
@@ -33,10 +48,27 @@ def Listar_BD(db):
           print(registro["id"]," --- ",registro["nombre"],registro["apellidos"],"-- Edad:",registro["edad"])
     except:
        print("Error en la consulta")
+
+def Buscar_alumno_edad(db,edad):
+    sql="select * from Alumnos where edad=%d" % edad
+    cursor = db.cursor(MySQLdb.cursors.DictCursor)
+    try:
+        cursor.execute(sql)
+        if cursor.rowcount==0:
+            print("No hay alumnos con esa edad.")
+        else:
+            registros = cursor.fetchall()
+            for registro in registros:
+                print(registro["nombre"])
+    except:
+       print("Error en la consulta")
+
 def MostrarMenu():
     menu='''
     1. Insertar Alumnos
     2. Listas Alumnos
+    3. Buscar alumnos por edad
+    4. Borrar alumno por id
     0. Salir
     '''
     print(menu)
